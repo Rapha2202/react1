@@ -30,19 +30,16 @@ function App() {
     },
   ]
 
-  const [pokemonIndex, setpokemonIndex] = useState(0);
+  const [pokemonIndex, setpokemonIndex] = useState(1);
 
-  const handleClickAdd = () => {
-    setpokemonIndex(pokemonIndex + 1)
+  const selectPokemon = (pokemon) => {
+    setpokemonIndex(pokemonList.map(item => item.name).indexOf(pokemon.name))
   }
 
-  const handleClickRemove = () => {
-    setpokemonIndex(pokemonIndex - 1)
-  }
 
   return (<div>
     <PokemonCard pokemon={pokemonList[pokemonIndex]} />
-    <Navbar pokemonIndex={pokemonIndex} pokemonList={pokemonList} Add={handleClickAdd} Remove={handleClickRemove} />
+    <Navbar pokemonIndex={pokemonIndex} pokemonList={pokemonList} select={selectPokemon} />
   </div>)
 }
 
