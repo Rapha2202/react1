@@ -1,10 +1,13 @@
-function NavBar({ pokemonIndex, pokemonList, select }) {
+function NavBar({ setpokemonIndex, pokemonList }) {
 
-
+    const selectPokemon = (pokemon) => {
+        setpokemonIndex(pokemonList.map(item => item.name).indexOf(pokemon.name))
+        pokemon.name == "pikachu" ? alert("pika pikachu !!!") : null
+    }
 
     return <figure>
         {pokemonList.map((pokemon) => (
-            <button key={pokemon.name} onClick={() => select(pokemon)}>{pokemon.name}</button>
+            <button key={pokemon.name} onClick={() => selectPokemon(pokemon)}>{pokemon.name}</button>
         ))}
     </figure>
 }
